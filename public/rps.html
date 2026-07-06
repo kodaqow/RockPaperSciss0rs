@@ -6,49 +6,121 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rock Paper Scissors</title>
-    <title>Rock Paper Scissors</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rock Paper Scissors — Arena</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: #000;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'Roboto Condensed', sans-serif;
+        color: #fff;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 3rem;
+        width: 525px;
+    }
+
+    .btn {
+        border: 5px solid indianred;
+        background-color: lightcoral;
+        border-radius: 50px;
+        font-size: xx-large;
+        cursor: pointer;
+        height: 100px;
+        width: 100px;
+    }
+
+    h1 {
+        margin: 3rem 0 3rem;
+        color: white;
+    }
+
+    main {
+        text-align: center;
+    }
+
+    p {
+        font-size: 1.25rem;
+    }
+
+    strong {
+        color: lightcoral;
+    }
+
+    #gameResult {
+        margin-bottom: 1rem;
+    }
+
+    span {
+        color: lightcoral;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .container-reset {
+        display: flex;
+        flex-direction: column;
+        margin: 2.5rem 0;
+        align-items: center;
+    }
+
+    .resetBtn {
+        width: 160px;
+        height: 65px;
+        border-radius: 45px;
+        border: 3px solid indianred;
+        background-color: lightcoral;
+        font-size: 1.05rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: white;
+        cursor: pointer;
+        letter-spacing: .04em;
+    }
+</style>
 <body>
-<div class="app-container">
-    <main class="game-card">
-        <header class="game-header">
-            <h1>Rock, Paper, Scissors</h1>
-            <p>A minimalist strategy simulator.</p>
-        </header>
+<main>
+    <h1>Rock  Paper  Scissors</h1>
+    <div class="container">
+        <!-- Button 1 -->
+        <button title="Choose Rock" class="btn" onclick="playGame('Rock')">✊</button>
 
-        <div class="container">
-            <button class="btn" onclick="playGame('Rock')">
-                <span class="btn-icon">✊</span>
-                <span class="btn-text">Rock</span>
-            </button>
-            <button class="btn" onclick="playGame('Scissors')">
-                <span class="btn-icon">✌️</span>
-                <span class="btn-text">Scissors</span>
-            </button>
-            <button class="btn" onclick="playGame('Paper')">
-                <span class="btn-icon">✋</span>
-                <span class="btn-text">Paper</span>
-            </button>
-        </div>
+        <!-- Button 2 -->
+        <button title="Choose Paper" class="btn" onclick="playGame('Paper');">✋</button>
 
-        <div class="results-wrapper">
-            <div id="gameResult" class="output-panel">
-                <p class="initial-msg">Select a move to begin the match.</p>
-            </div>
-
-            <div class="score-panel">
-                <span class="panel-label">Current Standings</span>
-                <div id="gameScore">
-                    <p>Win: 0, Loss: 0, Tie: 0.</p>
-                </div>
-            </div>
-        </div>
-    </main>
-</div>
+        <!-- Button 3 -->
+        <button title="Choose Scissors" class="btn" onclick="playGame('Scissors');">✌️</button>
+    </div>
+    <div class="container-reset">
+        <button title="case you want to reset the score" class="resetBtn" onclick="resetGame();">Reset Game</button>
+    </div>
+    <div id="gameResult"><p>Waiting for <span>your move...</span></p></div>
+    <div id="gameScore"><p>Wins: <strong>0</strong>, Losses: <strong>0</strong>, Ties: <strong>0</strong>.</p></div>
+</main>
 <script src="./js/rps.js"></script>
 </body>
 </html>
