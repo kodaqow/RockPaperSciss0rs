@@ -1,5 +1,4 @@
 node_modules/
-./public/css/style.css
 ./public/js/functions.js
 ./public/js/vrfAge.js
 ./public/js/main.js

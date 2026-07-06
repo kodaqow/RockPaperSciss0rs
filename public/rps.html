@@ -6,262 +6,49 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rock Paper Scissors</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rock Paper Scissors — Arena</title>
+    <title>Rock Paper Scissors</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
-<style>
-    /* --- Global Reset & Variable Palette --- */
-    :root {
-        --bg-dark: #0a0a12;
-        --card-bg: rgba(20, 20, 35, 0.65);
-        --border-glow: rgba(139, 92, 246, 0.25);
-        --neon-violet: #8b5cf6;
-        --neon-cyan: #06b6d4;
-        --neon-pink: #ec4899;
-        --text-main: #f3f4f6;
-        --text-muted: #9ca3af;
-    }
-
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, var(--bg-dark) 80%);
-        color: var(--text-main);
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        padding: 1.5rem;
-        overflow-x: hidden;
-    }
-
-    /* --- Main Layout Wrapper --- */
-    .game-wrapper {
-        width: 100%;
-        max-width: 550px;
-        display: flex;
-        flex-direction: column;
-        gap: 1.75rem;
-        animation: fadeIn 0.8s ease-out;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(15px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* --- Header Styles --- */
-    .game-header {
-        text-align: center;
-    }
-
-    .game-header h1 {
-        font-size: 2.5rem;
-        font-weight: 800;
-        letter-spacing: -1px;
-        text-transform: uppercase;
-        background: linear-gradient(to right, #ffffff, var(--neon-violet));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .game-header .accent-text {
-        background: linear-gradient(to right, var(--neon-cyan), var(--neon-pink));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .game-header .subtitle {
-        color: var(--text-muted);
-        font-size: 1rem;
-        margin-top: 0.25rem;
-        font-weight: 400;
-    }
-
-    /* --- Modern Interactive Buttons (The Grid) --- */
-    .container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        width: 100%;
-    }
-
-    .btn {
-        background: var(--card-bg);
-        border: 1px solid var(--border-glow);
-        border-radius: 18px;
-        padding: 1.25rem 0.5rem;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        backdrop-filter: blur(12px);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .btn-icon {
-        font-size: 2.25rem;
-        transition: transform 0.3s ease;
-    }
-
-    .btn-label {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: var(--text-main);
-        letter-spacing: 0.3125em;
-    }
-
-    .btn:hover {
-        transform: translateY(-5px);
-        border-color: var(--neon-violet);
-        box-shadow: 0 0 20px rgba(139, 92, 246, 0.4), inset 0 0 10px rgba(139, 92, 246, 0.2);
-    }
-
-    .btn:hover .btn-icon {
-        transform: scale(1.15);
-    }
-
-    .btn:active {
-        transform: translateY(-1px);
-    }
-
-    /* Display & Scoreboard Cards */
-    .display-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-glow);
-        border-radius: 20px;
-        padding: 1.5rem;
-        backdrop-filter: blur(12px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        min-height: 80px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .text-center {
-        text-align: center;
-    }
-
-    .placeholder-text {
-        color: var(--text-muted);
-        font-style: italic;
-        font-size: 0.95rem;
-    }
-
-    /* Custom styling inside the dynamically injected gameResult innerHTML */
-    #gameResult p {
-        font-size: 1.1rem;
-        line-height: 1.5;
-    }
-
-    #gameResult strong {
-        color: var(--neon-cyan);
-        font-weight: 600;
-    }
-
-    /* Highlight the final win/loss text strings */
-    #gameResult strong:last-of-type {
-        display: block;
-        font-size: 1.4rem;
-        font-weight: 800;
-        margin-top: 0.5rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    @keyframes popIn {
-        from { transform: scale(0.8); opacity: 0; }
-        to { transform: scale(1); opacity: 1; }
-    }
-
-    /* Scoreboard Card layout */
-    .scoreboard-card {
-        flex-direction: column;
-        gap: 0.75rem;
-        background: linear-gradient(135deg, rgba(20, 20, 35, 0.8) 0%, rgba(30, 20, 50, 0.8) 100%);
-        border-color: rgba(236, 72, 153, 0.15);
-    }
-
-    .scoreboard-card h3 {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: var(--neon-pink);
-        font-weight: 800;
-    }
-
-    /* Injected scoreboard styling targets */
-    #gameScore p {
-        font-size: 1.25rem;
-        font-weight: 600;
-        letter-spacing: 0.03125em;
-        color: var(--text-main);
-    }
-
-    /* Responsivity (mobile) */
-    @media (max-width: 400px) {
-        .game-header h1 {
-            font-size: 2rem;
-        }
-        .btn-icon {
-            font-size: 1.75rem;
-        }
-        #gameScore p {
-            font-size: 1.1rem;
-        }
-    }
-</style>
 <body>
-<main class="game-wrapper">
-    <header class="game-header">
-        <h1>Rock <span class="accent-text">Paper</span> Scissors</h1>
-        <p class="subtitle">Can you outsmart the machine?</p>
-    </header>
+<div class="app-container">
+    <main class="game-card">
+        <header class="game-header">
+            <h1>Rock, Paper, Scissors</h1>
+            <p>A minimalist strategy simulator.</p>
+        </header>
 
-    <div class="container">
-        <button class="btn" onclick="playGame('Rock')">
-            <span class="btn-icon">✊</span>
-            <span class="btn-label">Rock</span>
-        </button>
-
-        <button class="btn" onclick="playGame('Scissors')">
-            <span class="btn-icon">✌️</span>
-            <span class="btn-label">Scissors</span>
-        </button>
-
-        <button class="btn" onclick="playGame('Paper')">
-            <span class="btn-icon">✋</span>
-            <span class="btn-label">Paper</span>
-        </button>
-    </div>
-
-    <div class="display-card text-center">
-        <div id="gameResult">
-            <p class="placeholder-text">Pick your move above to start the match.</p>
+        <div class="container">
+            <button class="btn" onclick="playGame('Rock')">
+                <span class="btn-icon">✊</span>
+                <span class="btn-text">Rock</span>
+            </button>
+            <button class="btn" onclick="playGame('Scissors')">
+                <span class="btn-icon">✌️</span>
+                <span class="btn-text">Scissors</span>
+            </button>
+            <button class="btn" onclick="playGame('Paper')">
+                <span class="btn-icon">✋</span>
+                <span class="btn-text">Paper</span>
+            </button>
         </div>
-    </div>
 
-    <div class="display-card scoreboard-card">
-        <h3>Live Arena Standings</h3>
-        <div id="gameScore">
-            <p>Win: 0, Loss: 0, Tie: 0.</p>
+        <div class="results-wrapper">
+            <div id="gameResult" class="output-panel">
+                <p class="initial-msg">Select a move to begin the match.</p>
+            </div>
+
+            <div class="score-panel">
+                <span class="panel-label">Current Standings</span>
+                <div id="gameScore">
+                    <p>Win: 0, Loss: 0, Tie: 0.</p>
+                </div>
+            </div>
         </div>
-    </div>
-</main>
+    </main>
+</div>
 <script src="./js/rps.js"></script>
 </body>
 </html>
