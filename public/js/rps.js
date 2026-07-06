@@ -73,7 +73,7 @@ function playGame (playerMove) {
 // Generates paragraph with the moves made
 function showResult(playerMove, computerMove, result) {
     const gameResult = document.getElementById("gameResult");
-    gameResult.innerHTML = `<p>You picked <strong>${playerMove}</strong>. Computer picked <strong>${computerMove}</strong>. <strong>${result}</strong>.</p>`;
+    gameResult.innerHTML = `<p>You picked <strong>${playerMove}</strong>. Computer picked <strong>${computerMove}</strong>. <strong>${result}</strong></p>`;
 }
 
 // Generates paragraph with the score table
