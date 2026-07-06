@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript - Variables</title>
+</head>
+<style>
+    .container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        flex-direction: column;
+    }
+</style>
+<body>
+<main>
+    <div class="container">
+        <h1>JavaScript - Variables</h1>
+
+        <button title="Show Quantity" onclick="console.log(`Cart Quantity: ${cartQuantity}`);"> Show Quantity </button>
+        <button title="Add 1 product to Cart" onclick="cartQuantity = cartQuantity + 1; console.log(`Cart Quantity: ${cartQuantity}`);"> Add to Cart </button>
+        <button title="Add 2 products to Cart" onclick="cartQuantity = cartQuantity + 2; console.log(`Cart Quantity: ${cartQuantity}`);"> +2 </button>
+        <button title="Add 3 products to Cart" onclick="cartQuantity = cartQuantity + 2; console.log(`Cart Quantity: ${cartQuantity}`);"> +3 </button>
+        <button title="Reset Cart" onclick="cartQuantity = 0; console.log('Cart was reset.'); console.log(`Cart Quantity: ${cartQuantity}`);">Reset Cart </button>
+    </div>
+</main>
+<script>
+    let cartQuantity = 0;
+    console.log(`Cart Quantity: ${cartQuantity}`);
+
+    let result = calculation + 2;
+    console.log(result);
+
+    let message = 'Hello, World!';
+    console.log(message);
+
+    var1 = 5;
+
+
+</script>
+</body>
+</html>

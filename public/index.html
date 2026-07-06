@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome to JavaScript!</title>
+</head>
+<!-- style.css -->
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .btn {
+        font-size: 1rem;
+        font-weight: 600;
+        border: black 3px solid;
+        height: 50px;
+        width: 150px;
+        border-radius: 50px;
+        background-color: aqua;
+        cursor: pointer;
+        transition: 100ms ease-in-out;
+        outline: none;
+    }
+
+    .btn:hover {
+        background-color: #000;
+        color: aqua;
+        border-color: aqua;
+        transform: translateY(-5px)
+    }
+
+    .variables {
+        border: black 3px solid;
+        height: 50px;
+        width: 150px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: black;
+        background-color: darkred;
+        cursor: pointer;
+        transition: 100ms ease-in-out;
+        outline: none;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .variables:hover {
+        background-color: #000;
+        color: darkred;
+        border-color: darkred;
+        transform: translateY(-5px)
+    }
+
+    .rps {
+        border: black 3px solid;
+        height: 50px;
+        width: 150px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: black;
+        background-color: yellow;
+        cursor: pointer;
+        transition: 100ms ease-in-out;
+        outline: none;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .rps:hover {
+        background-color: #000;
+        color: yellow;
+        border-color: yellow;
+        transform: translateY(-5px)
+    }
+
+    .vrf {
+        border: black 3px solid;
+        height: 50px;
+        width: 150px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: black;
+        background-color: blue;
+        cursor: pointer;
+        transition: 100ms ease-in-out;
+        outline: none;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .vrf:hover {
+        background-color: #000;
+        color: blue;
+        border-color: blue;
+        transform: translateY(-5px)
+    }
+</style>
+<!-- main page -->
+<body>
+<!-- core page content -->
+<main>
+    <div class="container">
+        <h1>Welcome to JavaScript!</h1>
+        <button class="btn" title="I will thank you! ;>" onclick="alert('Thank you for clicking me!! ;>');"> Click me </button>
+        <!-- this tells it to ignore our current
+        position, and go straight to the absolute
+        root directory of the project, and start
+        looking from the top down-->
+        <a href="/variables.html" class="variables">Variables</a>
+
+        <!-- href explanation: ../../variables.html
+        - these silly ass dots mean folders  and the
+        exact position of the file, so basically what
+        we tell it is to go up two folders, then look-->
+        <a href="verifyAge.html" class="vrf">Verify Age</a>
+
+        <a href="rps.html" class="rps">RPS Game</a>
+    </div>
+</main>
+</body>
+<!-- Implementation of JavaScript -->
+<script src="./js/main.js">
+    // This is a JavaScript comment gng. Impressive, huh?
+
+    // or we could use a multi-line comment
+
+    /*
+    * multi
+    * line
+    * comment
+    * */
+</script>
+</html>
