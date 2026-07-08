@@ -13,7 +13,15 @@
 <script>
     const product = {
         name: 'T-Shirt',
-        price: 15
+        price: 15,
+        'delivery-time': '7 days',
+        rating: {
+            stars: 5,
+            count: 87
+        },
+        fun: function function1 () {
+            console.log('function inside object');
+        }
     };
     console.log(product);
 
@@ -27,6 +35,36 @@
     delete product.description;
 
     console.log(product);
+
+    console.log(product['name']);
+
+    product['delivery-time'] = `7 days`
+    console.log(product['delivery-time']);
+
+    console.log(product.rating.stars);
+    console.log(product.rating.count);
+
+    product.fun();
+
+    console.log(product);
+
+    // Method is function saved inside an object
+    // For instance, Math.random - Math is object
+    // provided by JavaScript, whereas random is
+    // a function that we call
+
+    const jsonString = JSON.stringify(product); // Converts a JS object into a JSON string
+
+    console.log(JSON.stringify(product));
+
+    // JSON serves the same purpose as JS objects
+    // However, they have fewer features (JSON does
+    // not support functions), but are universal and
+    // could be used in many different programming
+    // languages, while JS objects are understood
+    // solely by JavaScript
+
+    console.log(JSON.parse(jsonString)); // Converts a JSON string into a JS object
 </script>
 </body>
 </html>

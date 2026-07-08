@@ -1,14 +1,32 @@
 // An object, results are saved in it
+/*
 const score = {
     wins: 0,
     losses: 0,
+    ties:0
+}
+*/
+
+let score = JSON.parse(localStorage.getItem('score')) || {
+    wins: 0,
+    losses: 0,
     ties: 0
-};
+}
+
+/*
+if (!score) {
+    score = {
+        wins: 0,
+        loses: 0,
+        ties: 0
+    }
+}
+*/
 
 // Mathematical randomizer that decides
 // computer's move and passes it onto
 // other functions
-function pickComputerMove () {
+function pickComputerMove() {
     const randomNumber = Math.random();
 
     let computerMove = '';
@@ -28,7 +46,7 @@ function pickComputerMove () {
 
 // Saves computerMove, evaluates the result
 // (playerMove vs computerMove) and adds it to the score
-function playGame (playerMove) {
+function playGame(playerMove) {
     const computerMove = pickComputerMove();
     let result = '';
 
@@ -66,6 +84,8 @@ function playGame (playerMove) {
         score.ties += 1;
     }
 
+    localStorage.setItem('score', JSON.stringify(score));
+
     showResult(playerMove, computerMove, result);
     showScore();
 }
@@ -83,14 +103,16 @@ function showScore() {
 }
 
 // Resets the score
-function resetGame () {
+function resetGame() {
     score.wins = 0;
     score.losses = 0;
     score.ties = 0;
 
-    const gameScore = document.getElementById("gameScore");
-    gameScore.innerHTML = `<p>Win: <strong>0</strong>, Loss: <strong>0</strong>, Tie: <strong>0</strong>.</p>`;
+    localStorage.removeItem('score');
 
     const gameResult = document.getElementById("gameResult");
     gameResult.innerHTML = `<p>Waiting for <span>your move...</span></p>`;
+
+    const gameScore = document.getElementById("gameScore");
+    gameScore.innerHTML = `<p>Win: <strong>${score.wins}</strong>, Loss: <strong>${score.losses}</strong>, Tie: <strong>${score.ties}</strong>.</p>`;
 }
